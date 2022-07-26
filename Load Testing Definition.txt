@@ -1,0 +1,1 @@
+In load testing it basically checks the application's ability to perform under anticipated loads. The objective is to identify perfoemance bottlenecks before the software application goes live. 

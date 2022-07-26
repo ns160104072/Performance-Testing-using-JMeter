@@ -1,0 +1,40 @@
+Test Summary:
+
+Ramp-up Period:10 seconds[That means every second, 15 users will hit the website]
+The reference website is stable till applying 150 numberOfThreads. It error rate shows on summary report is 0.96%. On the other hand, it shows 0.5% on html report which I have attatched with the assignment. But when I apply numberOfThreads more than 150 then, the error rate has exceeded the threshold value which is 1%.
+
+1. At first, I have done the load testing using BlazeMeter. It's a chrome extension which is a performance testing tool. By using this, I have visited different page of your website and it has recorded everything automatically in the background. Every time I was hitting a page and it was picking the headers information of that page and also picking the url/api in the server or ip address. Finally, it has created a jmx file which i can import into JMeter platform.
+
+2. Secondly, I have done the load testing by using JMeter Recording tool. Which is an extra feature of JMeter application. For recording, I had to do some configuration in Mozilla Firefox. While visiting different pages of your website, the recording tool was running on the background.
+
+Finally, I, have done the load testing and stress testing using GUI and CLI mode of JMeter. At first, I created a Test Plan. Under the test plan, I have added a thread group. Under the thread group, I have added a multiple http request samplers. In every sampler, I have given a common server or ip which is https.www.banglapuzzle.com, and varying the path of each page. I have kept the protocol as https for all the samplers. For showing the result, I have added different listeners like, view results tree, view results in a table, summary report and aggregate report. I have come to a conclusion by seeing the error rate on the listeners and create a jmx file for the test plan. Once a jmx file is created, I have performed the jmx file on the command line interface and also have created a jtl file using this jmeter -n -t TestPlan1.jmx -l report\TestPlan1.jtl command. After creating the jtl file, I performed jmeter -g report\TestPlan1.jtl -o report\TestPlan1.html this command for generating a html report. By overviewing the report, I can easily say that, what is the error rate and how long our system will behave normal. When the average error rate will come more than 1% then, I can say, our system will crash or run down for the given numberOfThreads. This is how i will determine the load and stress testing for the reference website. Actually, I have been increasing the load or numberOfThreads from the thread group and was showing the error rate for the given numberOfThreads. Gradually Increase the numberOfThreads till the error rate is less than 1%. This is the actual load which the referance website will take.This is called the load testing. When it becomes more than 1%, The website will crash or the site will become down. This is called the stress testing.
+acceded I  stopped giving loads and determined an ultimate result. I have also added some assertions but later on, I disabled all the applied assertions. Because the error rate varies if i add any assertion which is failed after performing the testing. The failure rate has become increased.
+
+Pending Task:
+I couldn't perform the Volume Testing for the reference website because, Volume testing says, the large no. of. data is populated in the database and the overall software systems behaviors is monitored. Here, I don't have the access to the database. So, I'm not able to manipulate the data. Here we have a database dependency. But I know the basics of volume testing and If I get the opportunity for the next interview round, then I will definitely clarify the details about volume testing.
+
+Result from CLI:
+This is for 150 numberOfThreads
+Creating summariser <summary>
+Created the tree successfully using TestPlan3.jmx
+Starting standalone test @ July 25, 2022 5:03:57 AM BDT (1658703837425)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      1 in 00:00:04 =    0.3/s Avg:  2069 Min:  2069 Max:  2069 Err:     0 (0.00%) Active: 52 Started: 52 Finished: 0
+summary +    791 in 00:00:28 =   27.8/s Avg:  4486 Min:   121 Max: 27991 Err:     2 (0.25%) Active: 141 Started: 150 Finished: 9
+summary =    792 in 00:00:32 =   24.7/s Avg:  4483 Min:   121 Max: 27991 Err:     2 (0.25%)
+summary +    558 in 00:00:29 =   19.1/s Avg:  3394 Min:     0 Max: 31994 Err:     9 (1.61%) Active: 0 Started: 150 Finished: 150
+summary =   1350 in 00:01:01 =   22.0/s Avg:  4033 Min:     0 Max: 31994 Err:    11 (0.81%)
+Tidying up ...    @ July 25, 2022 5:04:59 AM BDT (1658703899201)
+... end of run
+
+This is for 180 numberOfThreads
+Creating summariser <summary>
+Created the tree successfully using TestPlan3.jmx
+Starting standalone test @ July 25, 2022 5:10:56 AM BDT (1658704256651)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      1 in 00:00:04 =    0.3/s Avg:  3217 Min:  3217 Max:  3217 Err:     0 (0.00%) Active: 65 Started: 65 Finished: 0
+summary +    803 in 00:00:29 =   27.6/s Avg:  4953 Min:     0 Max: 26163 Err:    10 (1.25%) Active: 174 Started: 180 Finished: 6
+summary =    804 in 00:00:33 =   24.4/s Avg:  4951 Min:     0 Max: 26163 Err:    10 (1.24%)
+summary +    739 in 00:00:30 =   24.5/s Avg:  4055 Min:     0 Max: 50415 Err:    25 (3.38%) Active: 11 Started: 180 Finished: 169
+summary =   1543 in 00:01:03 =   24.5/s Avg:  4522 Min:     0 Max: 50415 Err:    35 (2.27%) It was not finshed though. But we can calculate the average error rate from here and that is more than 1%.
+

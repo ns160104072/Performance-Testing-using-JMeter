@@ -1,0 +1,1 @@
+In stress testing, it basically involves tesing an application under extreme workloads to see how it handles high traffic or data processing. The objective is to identify breaking point of an application.

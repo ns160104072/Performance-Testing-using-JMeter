@@ -1,0 +1,2 @@
+ jmeter -n -t TestPlan3.jmx -l report\TestPlan3.jtl
+jmeter -g report\TestPlan3.jtl -o report\TestPlan3.html
